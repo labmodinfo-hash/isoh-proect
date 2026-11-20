@@ -140,7 +140,7 @@ title: Главная
     </section>
 
     {% assign terms_list = site.data.glossary.glossary | default: site.data.glossary %}
-    {% assign core = terms_list %}
+    {% assign core = terms_list[0] %}
     {% if core %}
     <section id="concept" class="section-block">
       <div class="section-top">
