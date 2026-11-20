@@ -2,188 +2,196 @@
 layout: default
 title: Главная
 ---
-<section class="hero">
-  <div class="container">
-    <span class="meta-tag">DOC-ID: ISOH-MANIFESTO-2026 // WORKING OBSERVATORY</span>
-    <h1>Как на самом деле управляются сложные системы: между регламентом, алгоритмом и неформальной нормой</h1>
-    <p>Независимая исследовательская лаборатория. Изучаем, как в современных организациях и цифровых системах переплетаются формальная бюрократия, алгоритмический контроль и негласные правила.</p>
-  </div>
-</section>
+<div class="layout-grid">
+  <aside class="sidebar">
+    <div>
+      <a href="{{ '/' | relative_url }}" class="logo-row">
+        <span class="logo-title">ISOH RU</span>
+        <span class="version-pill">v0.4</span>
+      </a>
+      <div class="lab-ru">Институт социальной организации и гибридного управления</div>
+      <div class="lab-en">INSTITUTE OF SOCIAL ORGANIZATION &amp; HYBRID GOVERNANCE</div>
+      <p class="lab-desc">
+        Независимая исследовательская лаборатория. Изучаем, как в современных организациях и цифровых системах переплетаются формальная бюрократия, алгоритмический контроль и негласные правила.
+      </p>
 
-<!-- 01. ТРИ КОНТУРА -->
-<section id="contours" class="section">
-  <div class="container">
-    <div class="section-header">
-      <span class="meta-tag">01 // METHODOLOGY</span>
-      <h2>Аналитическая рамка: три контура управления</h2>
+      <nav class="side-nav">
+        <a href="#contours"><span>01. Оптика и три контура</span><span class="nav-tag">[MODEL]</span></a>
+        <a href="#simulator"><span>02. Симулятор управляемости</span><span class="nav-tag">[TOOL]</span></a>
+        <a href="#registry"><span>03. Трекер работ и препринтов</span><span class="nav-tag">[INDEX]</span></a>
+        <a href="#concept"><span>04. Базовый концепт</span><span class="nav-tag">[DEF]</span></a>
+        <a href="{{ '/glossary/' | relative_url }}"><span>05. Словарь категорий</span><span class="nav-tag">[GLOSSARY]</span></a>
+      </nav>
     </div>
-    <div class="grid-3">
-      <div class="card">
-        <div>
-          <span class="meta-tag">КОНТУР I // ФОРМАЛЬНЫЙ</span>
-          <h3>Бюрократия и самореферентные системы</h3>
-          <p>Почему сложные институты не поддаются прямому «ручному» перепрограммированию и перерабатывают внешние реформы по собственным внутренним кодам.</p>
-        </div>
-        <a href="#registry" class="card-link">К работам Контура I →</a>
-      </div>
-      <div class="card">
-        <div>
-          <span class="meta-tag">КОНТУР II // АЛГОРИТМИЧЕСКИЙ</span>
-          <h3>Цифровой паноптикум и архитектура выбора</h3>
-          <p>Как рекомендательные ленты, рейтинги и скрытые метрики ранжирования формируют предсказуемые паттерны поведения без прямых приказов.</p>
-        </div>
-        <a href="#registry" class="card-link">К работам Контура II →</a>
-      </div>
-      <div class="card">
-        <div>
-          <span class="meta-tag">КОНТУР III // ТЕНЕВОЙ</span>
-          <h3>Неформальные правила против регламентов</h3>
-          <p>Разрыв между должностными инструкциями и реальными практиками: как негласные договорённости спасают систему от паралича, создавая зоны скрытой власти.</p>
-        </div>
-        <a href="#registry" class="card-link">К работам Контура III →</a>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- 02. СИМУЛЯТОР -->
-<section id="simulator" class="section">
-  <div class="container">
-    <div class="section-header">
-      <span class="meta-tag">02 // INTERACTIVE DIAGNOSTICS</span>
-      <h2>Конструктор профиля гибридной управляемости</h2>
+    <div class="sidebar-footer">
+      <strong>© 2026 ISOH.RU</strong>
+      Открытая научная тетрадь. Все препринты доступны для цитирования.
     </div>
-    <div class="simulator-box">
-      <div>
-        <div class="slider-group">
-          <div class="slider-label">
-            <span>1. Давление формальных регламентов</span>
-            <span id="val-formal">50%</span>
+  </aside>
+
+  <main class="main-content">
+    <section class="section-block">
+      <div class="section-top">
+        <h2>Позиционирование лаборатории</h2>
+        <span class="doc-code">DOC-ID: ISOH-MANIFESTO-2026</span>
+      </div>
+      <h1 class="manifesto-title">Как на самом деле управляются сложные системы: между регламентом, алгоритмом и неформальной нормой</h1>
+      <p class="manifesto-lead">
+        Классическая социология управления рассматривала организацию через призму формальной иерархии, а цифровая аналитика сводит поведение людей к метрикам интерфейса. В реальности любая современная система работает в режиме <strong>гибридной управляемости</strong> — постоянного торга между предписанием, кодом платформы и живыми социальными практиками.
+      </p>
+    </section>
+
+    <section id="contours" class="section-block">
+      <div class="section-top">
+        <h2>01. Аналитическая рамка: три контура управления</h2>
+        <span class="doc-code">METHODOLOGY</span>
+      </div>
+      <div class="contours-grid">
+        <div class="contour-card">
+          <div>
+            <span class="contour-label">КОНТУР I // ФОРМАЛЬНЫЙ</span>
+            <h3>Бюрократия и самореферентные системы</h3>
+            <p>Почему сложные институты не поддаются прямому «ручному» перепрограммированию и перерабатывают внешние реформы по собственным внутренним кодам.</p>
           </div>
-          <div class="slider-desc">Жёсткость инструкций, отчётности, юридических и бюрократических процедур.</div>
-          <input type="range" id="range-formal" min="0" max="100" value="50" oninput="updateSim()">
+          <a href="#registry" class="contour-link">К тексту: Аутопоэзис общества →</a>
         </div>
-
-        <div class="slider-group">
-          <div class="slider-label">
-            <span>2. Алгоритмическая координация</span>
-            <span id="val-algo">50%</span>
+        <div class="contour-card">
+          <div>
+            <span class="contour-label">КОНТУР II // АЛГОРИТМИЧЕСКИЙ</span>
+            <h3>Цифровой паноптикум и архитектура выбора</h3>
+            <p>Как рекомендательные ленты, рейтинги и скрытые метрики ранжирования формируют предсказуемые паттерны поведения без прямых приказов.</p>
           </div>
-          <div class="slider-desc">Влияние KPI-дашбордов, рейтингов, автоматического распределения задач и метрик.</div>
-          <input type="range" id="range-algo" min="0" max="100" value="50" oninput="updateSim()">
+          <a href="#registry" class="contour-link">К тексту: Алгоритмический паноптикум →</a>
         </div>
-
-        <div class="slider-group">
-          <div class="slider-label">
-            <span>3. Автономия негласных правил</span>
-            <span id="val-shadow">50%</span>
+        <div class="contour-card">
+          <div>
+            <span class="contour-label">КОНТУР III // ТЕНЕВОЙ</span>
+            <h3>Неформальные правила против регламентов</h3>
+            <p>Разрыв между должностными инструкциями и реальными практиками: как негласные договорённости спасают систему от паралича, создавая зоны скрытой власти.</p>
           </div>
-          <div class="slider-desc">Роль личных договорённостей, горизонтальных связей и обхода официальных процедур.</div>
-          <input type="range" id="range-shadow" min="0" max="100" value="50" oninput="updateSim()">
+          <a href="#registry" class="contour-link">К тексту: Неформальные правила →</a>
         </div>
       </div>
+    </section>
 
-      <div class="sim-result">
-        <span class="meta-tag">ДИАГНОСТИЧЕСКИЙ ПРОФИЛЬ СИСТЕМЫ</span>
-        <h3 id="sim-title">Сбалансированный гибрид</h3>
-        <p id="sim-desc" style="margin-bottom:14px;">Формальные правила задают рамку, алгоритмы отслеживают базовые метрики, а неформальные связи компенсируют нестандартные ситуации. Система устойчива к умеренным внешним шокам.</p>
-        <p id="sim-risk" style="font-size:0.9rem;"><strong>Ключевой риск:</strong> размывание ответственности между руководителем, алгоритмом и исполнителем.</p>
+    <section id="simulator" class="section-block">
+      <div class="section-top">
+        <h2>02. Конструктор профиля гибридной управляемости</h2>
+        <span class="doc-code">INTERACTIVE DIAGNOSTICS</span>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- 03. РЕЕСТР РАБОТ -->
-<section id="registry" class="section">
-  <div class="container">
-    <div class="section-header">
-      <span class="meta-tag">03 // WORKING PAPERS & NOTES</span>
-      <h2>Реестр работ и исследовательских треков</h2>
-    </div>
-
-    <table class="registry-table">
-      <thead>
-        <tr>
-          <th style="width:140px;">Шифр</th>
-          <th>Материал / Исследовательский трек</th>
-          <th style="width:180px;">Статус</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for post in site.posts %}
-        <tr>
-          <td><span class="badge">{{ post.code | default: "ISOH-WP" }}</span></td>
-          <td>
-            <a href="{{ post.url | relative_url }}" class="registry-title">{{ post.title }}</a>
-            <div class="registry-sub">{{ post.contour }} · {{ post.excerpt | truncate: 120 }}</div>
-          </td>
-          <td>
-            <span class="badge {% if post.status == 'Опубликовано' %}badge-published{% else %}badge-draft{% endif %}">
-              {{ post.status | default: "Опубликовано" }}
-            </span>
-          </td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  </div>
-</section>
-
-<!-- 04. БАЗОВОЕ ПОНЯТИЕ ИЗ ГЛОССАРИЯ -->
-{% assign core_term = site.data.glossary[0] %}
-{% if core_term %}
-<section class="section">
-  <div class="container">
-    <div class="section-header">
-      <span class="meta-tag">04 // GLOSSARY CORE</span>
-      <h2>Базовое понятие</h2>
-    </div>
-    <div class="card">
-      <div>
-        <span class="meta-tag">{{ core_term.original }}</span>
-        <h3>{{ core_term.title }}</h3>
-        <p>{{ core_term.description }}</p>
+      <div class="sim-grid">
+        <div>
+          <div class="slider-row">
+            <div class="slider-head"><span>1. Давление формальных регламентов</span><span id="val-f">50%</span></div>
+            <div class="slider-hint">Жёсткость инструкций, отчётности, юридических и бюрократических процедур.</div>
+            <input type="range" id="in-f" min="0" max="100" value="50" oninput="runSim()">
+          </div>
+          <div class="slider-row">
+            <div class="slider-head"><span>2. Алгоритмическая координация</span><span id="val-a">50%</span></div>
+            <div class="slider-hint">Влияние KPI-дашбордов, рейтингов, автоматического распределения задач и метрик.</div>
+            <input type="range" id="in-a" min="0" max="100" value="50" oninput="runSim()">
+          </div>
+          <div class="slider-row" style="margin-bottom:0;">
+            <div class="slider-head"><span>3. Автономия негласных правил</span><span id="val-s">50%</span></div>
+            <div class="slider-hint">Роль личных договорённостей, горизонтальных связей и обхода официальных процедур.</div>
+            <input type="range" id="in-s" min="0" max="100" value="50" oninput="runSim()">
+          </div>
+        </div>
+        <div class="sim-output">
+          <span class="doc-code">ДИАГНОСТИЧЕСКИЙ ПРОФИЛЬ СИСТЕМЫ</span>
+          <h3 id="sim-t">Сбалансированный гибрид</h3>
+          <p id="sim-d" style="margin-bottom:10px;">Формальные правила задают рамку, алгоритмы отслеживают базовые метрики, а неформальные связи компенсируют нестандартные ситуации. Система устойчива к умеренным внешним шокам.</p>
+          <p id="sim-r" style="font-size:0.82rem; color:var(--muted);"><strong>Ключевой риск:</strong> размывание ответственности между руководителем, алгоритмом и исполнителем.</p>
+        </div>
       </div>
-      <a href="{{ '/glossary/' | relative_url }}" class="card-link">Открыть полный глоссарий ({{ site.data.glossary.size }}) →</a>
-    </div>
-  </div>
-</section>
-{% endif %}
+    </section>
+
+    <section id="registry" class="section-block">
+      <div class="section-top">
+        <h2>03. Реестр работ и исследовательских треков</h2>
+        <span class="doc-code">WORKING PAPERS &amp; NOTES</span>
+      </div>
+      <table class="registry-table">
+        <thead>
+          <tr>
+            <th style="width:130px;">Шифр</th>
+            <th>Материал / Исследовательский трек</th>
+            <th style="width:160px;">Статус</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for post in site.posts %}
+          <tr>
+            <td><span class="code-pill">{{ post.code }}</span></td>
+            <td>
+              <a href="{{ post.url | relative_url }}" class="paper-link">{{ post.title }}</a>
+              <div class="paper-meta">{{ post.contour }} · {{ post.excerpt | truncate: 110 }}</div>
+            </td>
+            <td>
+              <span class="status-badge {% if post.status == 'Опубликовано' %}status-ok{% endif %}">
+                {{ post.status | default: "Опубликовано" }}
+              </span>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </section>
+
+    {% assign core = site.data.glossary %}
+    {% if core %}
+    <section id="concept" class="section-block">
+      <div class="section-top">
+        <h2>04. Ключевая категория</h2>
+        <span class="doc-code">GLOSSARY // CORE</span>
+      </div>
+      <div class="contour-card">
+        <span class="contour-label">БАЗОВОЕ ПОНЯТИЕ · <em>{{ core.original }}</em></span>
+        <h3 style="font-family:var(--serif); font-size:1.4rem; font-weight:400;">{{ core.title }}</h3>
+        <p style="color:var(--text);">{{ core.description }}</p>
+        <a href="{{ '/glossary/' | relative_url }}" class="contour-link">Открыть полный словарь категорий ({{ site.data.glossary.size }}) →</a>
+      </div>
+    </section>
+    {% endif %}
+  </main>
+</div>
 
 <script>
-function updateSim() {
-  const f = parseInt(document.getElementById('range-formal').value);
-  const a = parseInt(document.getElementById('range-algo').value);
-  const s = parseInt(document.getElementById('range-shadow').value);
+function runSim() {
+  const f = +document.getElementById('in-f').value;
+  const a = +document.getElementById('in-a').value;
+  const s = +document.getElementById('in-s').value;
+  document.getElementById('val-f').innerText = f + '%';
+  document.getElementById('val-a').innerText = a + '%';
+  document.getElementById('val-s').innerText = s + '%';
 
-  document.getElementById('val-formal').innerText = f + '%';
-  document.getElementById('val-algo').innerText = a + '%';
-  document.getElementById('val-shadow').innerText = s + '%';
-
-  const title = document.getElementById('sim-title');
-  const desc = document.getElementById('sim-desc');
-  const risk = document.getElementById('sim-risk');
+  const t = document.getElementById('sim-t');
+  const d = document.getElementById('sim-d');
+  const r = document.getElementById('sim-r');
 
   if (f > 70 && s > 65) {
-    title.innerText = 'Ритуализированная бюрократия с теневой компенсацией';
-    desc.innerText = 'Высокая жёсткость регламентов блокирует официальные каналы. Реальная работа выполняется через негласные договорённости в обход инструкций.';
-    risk.innerHTML = '<strong>Ключевой риск:</strong> институциональное лицемерие и паралич при уходе ключевых неформальных лидеров.';
+    t.innerText = 'Ритуализированная бюрократия с теневой компенсацией';
+    d.innerText = 'Высокая жёсткость регламентов блокирует официальные каналы. Реальная работа выполняется через негласные договорённости в обход инструкций.';
+    r.innerHTML = '<strong>Ключевой риск:</strong> институциональное лицемерие и паралич при уходе ключевых неформальных лидеров.';
   } else if (a > 70 && f < 45) {
-    title.innerText = 'Алгоритмический паноптикум (платформенный режим)';
-    desc.innerText = 'Координация полностью делегирована метрикам, рейтингам и автоматическому трекингу. Формальная иерархия сведена к минимуму.';
-    risk.innerHTML = '<strong>Ключевой риск:</strong> массовый гейминг KPI и выгорание исполнителей из-за непрозрачности алгоритмов.';
+    t.innerText = 'Алгоритмический паноптикум (платформенный режим)';
+    d.innerText = 'Координация полностью делегирована метрикам, рейтингам и автоматическому трекингу. Формальная иерархия сведена к минимуму.';
+    r.innerHTML = '<strong>Ключевой риск:</strong> массовый гейминг KPI и выгорание исполнителей из-за непрозрачности алгоритмов.';
   } else if (f > 70 && a > 70 && s < 35) {
-    title.innerText = 'Цифровой тейлоризм (сверхконтроль)';
-    desc.innerText = 'Двойное давление строгих регламентов и непрерывного цифрового мониторинга практически не оставляет пространства для автономии.';
-    risk.innerHTML = '<strong>Ключевой риск:</strong> потеря адаптивности, скрытый саботаж и нулевая инициативность на местах.';
+    t.innerText = 'Цифровой тейлоризм (сверхконтроль)';
+    d.innerText = 'Двойное давление строгих регламентов и непрерывного цифрового мониторинга практически не оставляет пространства для автономии.';
+    r.innerHTML = '<strong>Ключевой риск:</strong> потеря адаптивности, скрытый саботаж и нулевая инициативность на местах.';
   } else if (s > 70 && f < 40 && a < 40) {
-    title.innerText = 'Кланово-сетевая самоорганизация';
-    desc.innerText = 'Система держится на личном доверии, устных соглашениях и локальных обычаях при слабой институционализации.';
-    risk.innerHTML = '<strong>Ключевой риск:</strong> невозможность масштабирования, фаворитизм и непрозрачность решений.';
+    t.innerText = 'Кланово-сетевая самоорганизация';
+    d.innerText = 'Система держится на личном доверии, устных соглашениях и локальных обычаях при слабой институционализации.';
+    r.innerHTML = '<strong>Ключевой риск:</strong> невозможность масштабирования, фаворитизм и непрозрачность решений.';
   } else {
-    title.innerText = 'Сбалансированный гибрид';
-    desc.innerText = 'Формальные правила задают рамку, алгоритмы отслеживают базовые метрики, а неформальные связи компенсируют нестандартные ситуации. Система устойчива к умеренным внешним шокам.';
-    risk.innerHTML = '<strong>Ключевой риск:</strong> размывание ответственности между руководителем, алгоритмом и исполнителем.';
+    t.innerText = 'Сбалансированный гибрид';
+    d.innerText = 'Формальные правила задают рамку, алгоритмы отслеживают базовые метрики, а неформальные связи компенсируют нестандартные ситуации. Система устойчива к умеренным внешним шокам.';
+    r.innerHTML = '<strong>Ключевой риск:</strong> размывание ответственности между руководителем, алгоритмом и исполнителем.';
   }
 }
+
+runSim();
 </script>

@@ -1,44 +1,81 @@
 ---
 layout: default
 ---
-<div class="container">
-  <article class="article-wrap">
-    <header class="article-header">
-      <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
-        {% if page.code %}<span class="badge">{{ page.code }}</span>{% endif %}
-        {% if page.contour %}<span class="meta-tag">{{ page.contour }}</span>{% endif %}
-        {% if page.status %}<span class="badge badge-published">{{ page.status }}</span>{% endif %}
-      </div>
+<div class="layout-grid">
+  <aside class="sidebar">
+    <div>
+      <a href="{{ '/#registry' | relative_url }}" class="contour-link" style="display:inline-block; margin-bottom:20px;">← В реестр ISOH.RU</a>
+      <div class="doc-code" style="margin-bottom:8px;">WORKING PAPER // {{ page.code }}</div>
 
-      <h1>{{ page.title }}</h1>
+      <table class="meta-table">
+        <tr><td>Шифр</td><td><strong>{{ page.code }}</strong></td></tr>
+        <tr><td>Статус</td><td>{{ page.status | default: "Опубликовано" }}</td></tr>
+        <tr><td>Контур</td><td>{{ page.contour }}</td></tr>
+        <tr><td>Версия</td><td>{{ page.version | default: "v1.0 (2026)" }}</td></tr>
+      </table>
 
+      <div class="doc-code" style="margin-top:16px;">Структура материала</div>
+      <ul class="toc-list" id="auto-toc"></ul>
+    </div>
+
+    {% if page.cite %}
+    <div class="cite-card">
+      <div class="doc-code">Цитировать препринт</div>
+      <div class="cite-text" id="cite-source">{{ page.cite }}</div>
+      <button class="copy-btn" onclick="copyCite(this)">Скопировать ссылку</button>
+    </div>
+    {% endif %}
+  </aside>
+
+  <main class="main-content">
+    <header class="post-header">
+      <div class="doc-code">{{ page.code }} · {{ page.contour }} · {{ page.status | default: "Опубликовано" }}</div>
+      <h1 class="post-title">{{ page.title }}</h1>
       {% if page.tags %}
-      <div class="meta-tag" style="margin-top:8px;">
-        Ключевые слова: {{ page.tags | join: " · " }}
-      </div>
-      {% endif %}
-
-      {% if page.excerpt %}
-      <div class="abstract-box">
-        <strong>Аннотация / Abstract:</strong><br>
-        {{ page.excerpt }}
+      <div class="post-tags">
+        {% for tag in page.tags %}<span class="tag-chip">{{ tag }}</span>{% endfor %}
       </div>
       {% endif %}
     </header>
 
-    <div class="article-body">
-      {{ content }}
-    </div>
-
-    {% if page.cite %}
-    <div class="cite-box">
-      <strong>Цитировать препринт:</strong><br>
-      {{ page.cite }}
+    {% if page.excerpt %}
+    <div class="abstract-panel">
+      <div class="doc-code" style="margin-bottom:6px;">Аннотация / Abstract</div>
+      {{ page.excerpt }}
     </div>
     {% endif %}
 
-    <div style="margin-top:24px;">
-      <a href="{{ '/#registry' | relative_url }}" class="card-link">← Вернуться в реестр ISOH.RU</a>
+    <div class="post-content" id="post-body">
+      {{ content }}
     </div>
-  </article>
+
+    <div class="post-footer-nav">
+      <a href="{{ '/#registry' | relative_url }}">← В реестр: Все работы ISOH</a>
+      {% if page.next %}
+      <a href="{{ page.next.url | relative_url }}">Следующий препринт → {{ page.next.code }}</a>
+      {% elsif page.previous %}
+      <a href="{{ page.previous.url | relative_url }}">Предыдущий препринт → {{ page.previous.code }}</a>
+      {% endif %}
+    </div>
+  </main>
 </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const toc = document.getElementById("auto-toc");
+  const headings = document.querySelectorAll("#post-body h2");
+  headings.forEach((h, i) => {
+    if (!h.id) h.id = "sec-" + (i + 1);
+    const li = document.createElement("li");
+    li.innerHTML = `<a href="#${h.id}">— ${h.innerText}</a>`;
+    toc.appendChild(li);
+  });
+});
+
+function copyCite(btn) {
+  const text = document.getElementById("cite-source").innerText;
+  navigator.clipboard.writeText(text);
+  btn.innerText = "Скопировано ✓";
+  setTimeout(() => btn.innerText = "Скопировать ссылку", 2000);
+}
+</script>
