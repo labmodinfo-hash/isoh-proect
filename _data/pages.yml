@@ -1,0 +1,124 @@
+media:
+  input: assets/images
+  output: /assets/images
+
+content:
+  - name: posts
+    label: Исследования (Статьи)
+    type: collection
+    path: _posts
+    filename: "{year}-{month}-{day}-{primary}.md"
+    fields:
+      - name: layout
+        label: Шаблон
+        type: string
+        default: post
+        hidden: true
+      - name: title
+        label: Заголовок статьи
+        type: string
+        required: true
+      - name: date
+        label: Дата публикации
+        type: date
+        required: true
+      - name: category
+        label: Кафедра
+        type: select
+        options:
+          values:
+            - Кафедра визуальных кодов
+            - Лаборатория фольклора и мифа
+            - Архив архетипов
+      - name: image
+        label: Обложка статьи
+        type: image
+      - name: excerpt
+        label: Короткий анонс (лид)
+        type: text
+      - name: tags
+        label: Теги (через Enter)
+        type: string
+        list: true
+      - name: body
+        label: Текст исследования
+        type: rich-text
+
+  - name: glossary
+    label: Глоссарий терминов
+    type: file
+    path: _data/glossary.yml
+    fields:
+      - name: glossary
+        label: Список терминов
+        type: object
+        list: true
+        fields:
+          - name: title
+            label: Термин (на русском)
+            type: string
+            required: true
+          - name: japanese
+            label: Оригинал и перевод
+            type: string
+          - name: category
+            label: Категория термина
+            type: select
+            options:
+              values:
+                - Эстетика и философия
+                - Визуальные коды (Манпу)
+                - Фольклор и мифология
+                - Архетипы и тропы
+          - name: description
+            label: Научное определение и примеры
+            type: text
+            required: true
+
+  - name: publications
+    label: Академические исследования (публикации)
+    type: file
+    path: _data/publications.yml
+    fields:
+      - name: publications
+        label: Список публикаций (новые добавляйте сверху)
+        type: object
+        list: true
+        fields:
+          - name: year
+            label: Год
+            type: number
+            required: true
+          - name: category
+            label: Проект
+            type: select
+            options:
+              values:
+                - Проект визуальных кодов
+                - Проект фольклора и мифа
+                - Архив архетипов
+                - Теория и методология
+                - Медиа и коммуникации
+          - name: title
+            label: Название работы
+            type: string
+            required: true
+          - name: authors
+            label: Авторы (например, Рубцова М.В.)
+            type: string
+            required: true
+          - name: source
+            label: Журнал, год, номер, страницы
+            type: string
+          - name: doi
+            label: DOI (без https://doi.org/)
+            type: string
+          - name: abstract
+            label: Краткая аннотация
+            type: text
+          - name: pdf
+            label: Путь к PDF (например, /assets/pdf/имя-файла.pdf)
+            type: string
+          - name: cite
+            label: Библиографическая ссылка для кнопки «Цитировать»
+            type: text

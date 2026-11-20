@@ -1,0 +1,44 @@
+---
+layout: default
+---
+<div class="container">
+  <article class="article-wrap">
+    <header class="article-header">
+      <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+        {% if page.code %}<span class="badge">{{ page.code }}</span>{% endif %}
+        {% if page.contour %}<span class="meta-tag">{{ page.contour }}</span>{% endif %}
+        {% if page.status %}<span class="badge badge-published">{{ page.status }}</span>{% endif %}
+      </div>
+
+      <h1>{{ page.title }}</h1>
+
+      {% if page.tags %}
+      <div class="meta-tag" style="margin-top:8px;">
+        Ключевые слова: {{ page.tags | join: " · " }}
+      </div>
+      {% endif %}
+
+      {% if page.excerpt %}
+      <div class="abstract-box">
+        <strong>Аннотация / Abstract:</strong><br>
+        {{ page.excerpt }}
+      </div>
+      {% endif %}
+    </header>
+
+    <div class="article-body">
+      {{ content }}
+    </div>
+
+    {% if page.cite %}
+    <div class="cite-box">
+      <strong>Цитировать препринт:</strong><br>
+      {{ page.cite }}
+    </div>
+    {% endif %}
+
+    <div style="margin-top:24px;">
+      <a href="{{ '/#registry' | relative_url }}" class="card-link">← Вернуться в реестр ISOH.RU</a>
+    </div>
+  </article>
+</div>

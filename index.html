@@ -1,0 +1,189 @@
+---
+layout: default
+title: Главная
+---
+<section class="hero">
+  <div class="container">
+    <span class="meta-tag">DOC-ID: ISOH-MANIFESTO-2026 // WORKING OBSERVATORY</span>
+    <h1>Как на самом деле управляются сложные системы: между регламентом, алгоритмом и неформальной нормой</h1>
+    <p>Независимая исследовательская лаборатория. Изучаем, как в современных организациях и цифровых системах переплетаются формальная бюрократия, алгоритмический контроль и негласные правила.</p>
+  </div>
+</section>
+
+<!-- 01. ТРИ КОНТУРА -->
+<section id="contours" class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="meta-tag">01 // METHODOLOGY</span>
+      <h2>Аналитическая рамка: три контура управления</h2>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <div>
+          <span class="meta-tag">КОНТУР I // ФОРМАЛЬНЫЙ</span>
+          <h3>Бюрократия и самореферентные системы</h3>
+          <p>Почему сложные институты не поддаются прямому «ручному» перепрограммированию и перерабатывают внешние реформы по собственным внутренним кодам.</p>
+        </div>
+        <a href="#registry" class="card-link">К работам Контура I →</a>
+      </div>
+      <div class="card">
+        <div>
+          <span class="meta-tag">КОНТУР II // АЛГОРИТМИЧЕСКИЙ</span>
+          <h3>Цифровой паноптикум и архитектура выбора</h3>
+          <p>Как рекомендательные ленты, рейтинги и скрытые метрики ранжирования формируют предсказуемые паттерны поведения без прямых приказов.</p>
+        </div>
+        <a href="#registry" class="card-link">К работам Контура II →</a>
+      </div>
+      <div class="card">
+        <div>
+          <span class="meta-tag">КОНТУР III // ТЕНЕВОЙ</span>
+          <h3>Неформальные правила против регламентов</h3>
+          <p>Разрыв между должностными инструкциями и реальными практиками: как негласные договорённости спасают систему от паралича, создавая зоны скрытой власти.</p>
+        </div>
+        <a href="#registry" class="card-link">К работам Контура III →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02. СИМУЛЯТОР -->
+<section id="simulator" class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="meta-tag">02 // INTERACTIVE DIAGNOSTICS</span>
+      <h2>Конструктор профиля гибридной управляемости</h2>
+    </div>
+    <div class="simulator-box">
+      <div>
+        <div class="slider-group">
+          <div class="slider-label">
+            <span>1. Давление формальных регламентов</span>
+            <span id="val-formal">50%</span>
+          </div>
+          <div class="slider-desc">Жёсткость инструкций, отчётности, юридических и бюрократических процедур.</div>
+          <input type="range" id="range-formal" min="0" max="100" value="50" oninput="updateSim()">
+        </div>
+
+        <div class="slider-group">
+          <div class="slider-label">
+            <span>2. Алгоритмическая координация</span>
+            <span id="val-algo">50%</span>
+          </div>
+          <div class="slider-desc">Влияние KPI-дашбордов, рейтингов, автоматического распределения задач и метрик.</div>
+          <input type="range" id="range-algo" min="0" max="100" value="50" oninput="updateSim()">
+        </div>
+
+        <div class="slider-group">
+          <div class="slider-label">
+            <span>3. Автономия негласных правил</span>
+            <span id="val-shadow">50%</span>
+          </div>
+          <div class="slider-desc">Роль личных договорённостей, горизонтальных связей и обхода официальных процедур.</div>
+          <input type="range" id="range-shadow" min="0" max="100" value="50" oninput="updateSim()">
+        </div>
+      </div>
+
+      <div class="sim-result">
+        <span class="meta-tag">ДИАГНОСТИЧЕСКИЙ ПРОФИЛЬ СИСТЕМЫ</span>
+        <h3 id="sim-title">Сбалансированный гибрид</h3>
+        <p id="sim-desc" style="margin-bottom:14px;">Формальные правила задают рамку, алгоритмы отслеживают базовые метрики, а неформальные связи компенсируют нестандартные ситуации. Система устойчива к умеренным внешним шокам.</p>
+        <p id="sim-risk" style="font-size:0.9rem;"><strong>Ключевой риск:</strong> размывание ответственности между руководителем, алгоритмом и исполнителем.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03. РЕЕСТР РАБОТ -->
+<section id="registry" class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="meta-tag">03 // WORKING PAPERS & NOTES</span>
+      <h2>Реестр работ и исследовательских треков</h2>
+    </div>
+
+    <table class="registry-table">
+      <thead>
+        <tr>
+          <th style="width:140px;">Шифр</th>
+          <th>Материал / Исследовательский трек</th>
+          <th style="width:180px;">Статус</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for post in site.posts %}
+        <tr>
+          <td><span class="badge">{{ post.code | default: "ISOH-WP" }}</span></td>
+          <td>
+            <a href="{{ post.url | relative_url }}" class="registry-title">{{ post.title }}</a>
+            <div class="registry-sub">{{ post.contour }} · {{ post.excerpt | truncate: 120 }}</div>
+          </td>
+          <td>
+            <span class="badge {% if post.status == 'Опубликовано' %}badge-published{% else %}badge-draft{% endif %}">
+              {{ post.status | default: "Опубликовано" }}
+            </span>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 04. БАЗОВОЕ ПОНЯТИЕ ИЗ ГЛОССАРИЯ -->
+{% assign core_term = site.data.glossary[0] %}
+{% if core_term %}
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="meta-tag">04 // GLOSSARY CORE</span>
+      <h2>Базовое понятие</h2>
+    </div>
+    <div class="card">
+      <div>
+        <span class="meta-tag">{{ core_term.original }}</span>
+        <h3>{{ core_term.title }}</h3>
+        <p>{{ core_term.description }}</p>
+      </div>
+      <a href="{{ '/glossary/' | relative_url }}" class="card-link">Открыть полный глоссарий ({{ site.data.glossary.size }}) →</a>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<script>
+function updateSim() {
+  const f = parseInt(document.getElementById('range-formal').value);
+  const a = parseInt(document.getElementById('range-algo').value);
+  const s = parseInt(document.getElementById('range-shadow').value);
+
+  document.getElementById('val-formal').innerText = f + '%';
+  document.getElementById('val-algo').innerText = a + '%';
+  document.getElementById('val-shadow').innerText = s + '%';
+
+  const title = document.getElementById('sim-title');
+  const desc = document.getElementById('sim-desc');
+  const risk = document.getElementById('sim-risk');
+
+  if (f > 70 && s > 65) {
+    title.innerText = 'Ритуализированная бюрократия с теневой компенсацией';
+    desc.innerText = 'Высокая жёсткость регламентов блокирует официальные каналы. Реальная работа выполняется через негласные договорённости в обход инструкций.';
+    risk.innerHTML = '<strong>Ключевой риск:</strong> институциональное лицемерие и паралич при уходе ключевых неформальных лидеров.';
+  } else if (a > 70 && f < 45) {
+    title.innerText = 'Алгоритмический паноптикум (платформенный режим)';
+    desc.innerText = 'Координация полностью делегирована метрикам, рейтингам и автоматическому трекингу. Формальная иерархия сведена к минимуму.';
+    risk.innerHTML = '<strong>Ключевой риск:</strong> массовый гейминг KPI и выгорание исполнителей из-за непрозрачности алгоритмов.';
+  } else if (f > 70 && a > 70 && s < 35) {
+    title.innerText = 'Цифровой тейлоризм (сверхконтроль)';
+    desc.innerText = 'Двойное давление строгих регламентов и непрерывного цифрового мониторинга практически не оставляет пространства для автономии.';
+    risk.innerHTML = '<strong>Ключевой риск:</strong> потеря адаптивности, скрытый саботаж и нулевая инициативность на местах.';
+  } else if (s > 70 && f < 40 && a < 40) {
+    title.innerText = 'Кланово-сетевая самоорганизация';
+    desc.innerText = 'Система держится на личном доверии, устных соглашениях и локальных обычаях при слабой институционализации.';
+    risk.innerHTML = '<strong>Ключевой риск:</strong> невозможность масштабирования, фаворитизм и непрозрачность решений.';
+  } else {
+    title.innerText = 'Сбалансированный гибрид';
+    desc.innerText = 'Формальные правила задают рамку, алгоритмы отслеживают базовые метрики, а неформальные связи компенсируют нестандартные ситуации. Система устойчива к умеренным внешним шокам.';
+    risk.innerHTML = '<strong>Ключевой риск:</strong> размывание ответственности между руководителем, алгоритмом и исполнителем.';
+  }
+}
+</script>

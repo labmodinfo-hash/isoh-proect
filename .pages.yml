@@ -1,0 +1,91 @@
+media:
+  input: assets/images
+  output: /assets/images
+
+content:
+  - name: posts
+    label: Препринты и статьи (Working Papers)
+    type: collection
+    path: _posts
+    filename: "{year}-{month}-{day}-{primary}.md"
+    fields:
+      - name: layout
+        label: Шаблон
+        type: string
+        default: post
+        hidden: true
+      - name: code
+        label: Шифр документа (например, ISOH-WP-04)
+        type: string
+        required: true
+      - name: status
+        label: Статус публикации
+        type: select
+        default: Опубликовано
+        options:
+          values:
+            - Опубликовано
+            - Препринт / Черновик
+            - В работе
+      - name: contour
+        label: Контур / Раздел
+        type: select
+        options:
+          values:
+            - Контур I · Формальный
+            - Контур II · Алгоритмический
+            - Контур III · Теневой
+            - Общая методология
+      - name: title
+        label: Заголовок работы
+        type: string
+        required: true
+      - name: date
+        label: Дата публикации
+        type: date
+        required: true
+      - name: excerpt
+        label: Аннотация (Abstract)
+        type: text
+        required: true
+      - name: tags
+        label: Ключевые слова (через Enter)
+        type: string
+        list: true
+      - name: cite
+        label: Библиографическая ссылка для цитирования
+        type: text
+      - name: body
+        label: Текст исследования (поддерживает Markdown)
+        type: rich-text
+
+  - name: glossary
+    label: Глоссарий категорий
+    type: file
+    path: _data/glossary.yml
+    fields:
+      - name: glossary
+        label: Список терминов (первый термин отображается на главной как «Базовое понятие»)
+        type: object
+        list: true
+        fields:
+          - name: title
+            label: Термин (на русском)
+            type: string
+            required: true
+          - name: original
+            label: Английский эквивалент / Источник (например, Hybrid Governance)
+            type: string
+          - name: category
+            label: Категория / Контур
+            type: select
+            options:
+              values:
+                - Базовые категории
+                - Контур I · Формальная бюрократия
+                - Контур II · Алгоритмический контроль
+                - Контур III · Неформальные практики
+          - name: description
+            label: Определение и операционализация
+            type: text
+            required: true

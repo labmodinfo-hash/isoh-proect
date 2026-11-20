@@ -1,0 +1,58 @@
+---
+layout: default
+title: Глоссарий категорий
+permalink: /glossary/
+---
+<div class="container" style="padding: 40px 24px;">
+  <span class="meta-tag">GLOSSARY // СЛОВАРЬ ЛАБОРАТОРИИ</span>
+  <h1 style="margin: 8px 0 12px;">Глоссарий гибридной управляемости</h1>
+  <p style="color: var(--muted); max-width: 720px; margin-bottom: 24px;">
+    Операциональные определения ключевых понятий на стыке социологии организаций, теории систем и критических исследований алгоритмов.
+  </p>
+
+  <input type="text" id="glossary-search" placeholder="Поиск по термину или определению..." onkeyup="filterGlossary()"
+    style="width:100%; max-width:480px; padding:10px 14px; border:1px solid var(--border); margin-bottom:16px; font-size:0.95rem;">
+
+  <div class="filter-bar">
+    <button class="filter-btn active" onclick="setCategory('all', this)">Все ({{ site.data.glossary.size }})</button>
+    <button class="filter-btn" onclick="setCategory('Базовые категории', this)">Базовые категории</button>
+    <button class="filter-btn" onclick="setCategory('Контур I · Формальная бюрократия', this)">Контур I</button>
+    <button class="filter-btn" onclick="setCategory('Контур II · Алгоритмический контроль', this)">Контур II</button>
+    <button class="filter-btn" onclick="setCategory('Контур III · Неформальные практики', this)">Контур III</button>
+  </div>
+
+  <div id="glossary-list">
+    {% for item in site.data.glossary %}
+    <div class="glossary-item" data-category="{{ item.category }}">
+      <div style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom:6px;">
+        <span class="meta-tag">{{ item.category }}</span>
+        {% if item.original %}<span class="meta-tag"><em>{{ item.original }}</em></span>{% endif %}
+      </div>
+      <h2 style="font-size:1.25rem; margin-bottom:8px;">{{ item.title }}</h2>
+      <p style="color: var(--text);">{{ item.description }}</p>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<script>
+let currentCat = 'all';
+
+function setCategory(cat, btn) {
+  currentCat = cat;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  filterGlossary();
+}
+
+function filterGlossary() {
+  const query = document.getElementById('glossary-search').value.toLowerCase();
+  document.querySelectorAll('.glossary-item').forEach(el => {
+    const cat = el.getAttribute('data-category');
+    const text = el.innerText.toLowerCase();
+    const matchCat = (currentCat === 'all' || cat === currentCat);
+    const matchText = text.includes(query);
+    el.style.display = (matchCat && matchText) ? 'block' : 'none';
+  });
+}
+</script>

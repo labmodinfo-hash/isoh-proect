@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% if page.title %}{{ page.title }} — {% endif %}ISOH.RU</title>
+  <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | truncate: 180 }}">
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="{{ '/' | relative_url }}" class="brand">
+        <span class="brand-code">ISOH.RU</span>
+        <span class="brand-name">Институт социальной организации и гибридного управления</span>
+      </a>
+      <nav class="nav-links">
+        <a href="{{ '/#contours' | relative_url }}">01. Три контура</a>
+        <a href="{{ '/#simulator' | relative_url }}">02. Симулятор</a>
+        <a href="{{ '/#registry' | relative_url }}">03. Реестр работ</a>
+        <a href="{{ '/glossary/' | relative_url }}">04. Глоссарий</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    {{ content }}
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 ISOH.RU // WORKING OBSERVATORY — Открытая научная тетрадь. Все препринты доступны для цитирования.</p>
+    </div>
+  </footer>
+</body>
+</html>

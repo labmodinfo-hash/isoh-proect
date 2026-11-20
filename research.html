@@ -1,0 +1,118 @@
+---
+layout: default
+title: Академические исследования
+permalink: /research/
+excerpt: "Научные статьи по семиотике визуальных образов, фольклору, мифологии и архетипам. Материалы доступны для ознакомления и цитирования."
+---
+{% assign pubs = site.data.publications.publications | default: site.data.publications %}
+<style>
+    .pub-header { padding: 48px 0 24px; border-bottom: 1px solid var(--border-color); }
+    .pub-header h1 { font-family: var(--font-serif); font-size: 44px; margin: 8px 0 14px; }
+    .pub-lead { color: var(--text-muted); max-width: 700px; font-size: 16px; margin: 0; }
+    .pub-search { width: 100%; max-width: 520px; margin-top: 24px; padding: 12px 18px; border: 1px solid var(--border-color); border-radius: 999px; background: rgba(247,250,250,0.85); font: 15px var(--font-sans); color: var(--text-main); }
+    .pub-search:focus { outline: 2px solid var(--moss); outline-offset: 1px; }
+    .pub-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+    .pub-tab { background: transparent; border: 1px solid var(--border-color); padding: 7px 16px; border-radius: 999px; font: 13px var(--font-sans); color: var(--text-muted); cursor: pointer; }
+    .pub-tab.active, .pub-tab:hover { background: var(--bg-accent); border-color: var(--bg-accent); color: #fff; }
+    .pub-count { margin-top: 14px; font-size: 13px; color: var(--text-muted); }
+    .pub-list { display: grid; gap: 18px; margin: 24px 0 0; }
+    .pub-card { background: rgba(247,250,250,0.78); border: 1px solid var(--border-color); border-radius: 16px; padding: 26px 28px; }
+    .pub-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+    .pub-year { font-size: 13px; font-weight: 600; color: var(--text-muted); }
+    .pub-cat { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-red); }
+    .pub-title { font-family: var(--font-serif); font-size: 28px; line-height: 1.2; margin: 0 0 8px; }
+    .pub-title a:hover { color: var(--accent-red); }
+    .pub-source { font-size: 14px; color: var(--text-muted); margin-bottom: 12px; }
+    .pub-abstract { font-size: 15px; line-height: 1.6; margin: 0 0 18px; }
+    .pub-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+    .pub-btn { display: inline-block; padding: 8px 18px; border: 1px solid var(--bg-accent); border-radius: 999px; background: transparent; font: 500 13px var(--font-sans); color: var(--bg-accent); cursor: pointer; }
+    .pub-btn:hover { background: var(--bg-accent); color: #fff; }
+    .pub-btn.primary { background: var(--bg-accent); color: #fff; }
+    .pub-btn.primary:hover { background: var(--accent-red); border-color: var(--accent-red); }
+    .pub-empty { color: var(--text-muted); padding: 24px 4px; }
+    @media (max-width: 768px) { .pub-header h1 { font-size: 34px; } .pub-card { padding: 20px; } .pub-title { font-size: 23px; } }
+</style>
+
+<section class="pub-header">
+    <span class="post-meta">Научный репозиторий института</span>
+    <h1>Академические исследования</h1>
+    <p class="pub-lead">Научные статьи по семиотике визуальных образов, фольклору, мифологии и архетипам. Все материалы доступны для ознакомления и цитирования.</p>
+    <input type="search" id="pubSearch" class="pub-search" placeholder="Поиск по названию, автору, журналу или году…" aria-label="Поиск по публикациям">
+    <div class="pub-tabs">
+        <button class="pub-tab active" data-filter="all">Все работы</button>
+        <button class="pub-tab" data-filter="Проект визуальных кодов">Визуальные коды</button>
+        <button class="pub-tab" data-filter="Проект фольклора и мифа">Фольклор и миф</button>
+        <button class="pub-tab" data-filter="Архив архетипов">Архетипы</button>
+        <button class="pub-tab" data-filter="Теория и методология">Теория и методология</button>
+        <button class="pub-tab" data-filter="Медиа и коммуникации">Медиа и коммуникации</button>
+    </div>
+    <div class="pub-count" id="pubCount"></div>
+</section>
+
+<section class="pub-list">
+    {% for p in pubs %}
+    <article class="pub-card" data-category="{{ p.category }}" data-search="{{ p.title }} {{ p.authors }} {{ p.source }} {{ p.year }} {{ p.abstract }}">
+        <div class="pub-meta">
+            <span class="pub-year">{{ p.year }}</span>
+            <span class="pub-cat">{{ p.category }}</span>
+        </div>
+        <h2 class="pub-title">{% if p.pdf and p.pdf != "" %}<a href="{{ p.pdf | relative_url }}" target="_blank" rel="noopener">{{ p.title }}</a>{% else %}{{ p.title }}{% endif %}</h2>
+        <div class="pub-source">{{ p.authors }} // {{ p.source }}</div>
+        {% if p.abstract %}<p class="pub-abstract">{{ p.abstract }}</p>{% endif %}
+        <div class="pub-actions">
+            {% if p.pdf and p.pdf != "" %}<a class="pub-btn primary" href="{{ p.pdf | relative_url }}" target="_blank" rel="noopener">Открыть PDF</a>{% endif %}
+            {% if p.cite and p.cite != "" %}<button type="button" class="pub-btn pub-cite" data-cite="{{ p.cite | escape }}">Цитировать</button>{% endif %}
+            {% if p.doi and p.doi != "" %}<a class="pub-btn" href="https://doi.org/{{ p.doi }}" target="_blank" rel="noopener">DOI</a>{% endif %}
+        </div>
+    </article>
+    {% endfor %}
+</section>
+<p class="pub-empty" id="pubEmpty" hidden>Ничего не найдено. Попробуйте изменить запрос или выбрать «Все работы».</p>
+
+<script>
+(function () {
+    var cards = [].slice.call(document.querySelectorAll('.pub-card'));
+    var input = document.getElementById('pubSearch');
+    var count = document.getElementById('pubCount');
+    var empty = document.getElementById('pubEmpty');
+    var cat = 'all';
+    function apply() {
+        var s = input.value.trim().toLowerCase(), n = 0;
+        cards.forEach(function (c) {
+            var ok = (cat === 'all' || c.dataset.category === cat) &&
+                     (!s || c.dataset.search.toLowerCase().indexOf(s) !== -1);
+            c.style.display = ok ? '' : 'none';
+            if (ok) n++;
+        });
+        count.textContent = 'Показано работ: ' + n + ' из ' + cards.length;
+        empty.hidden = n !== 0;
+    }
+    document.querySelectorAll('.pub-tab').forEach(function (b) {
+        b.addEventListener('click', function () {
+            cat = b.dataset.filter;
+            document.querySelectorAll('.pub-tab').forEach(function (x) { x.classList.toggle('active', x === b); });
+            apply();
+        });
+    });
+    input.addEventListener('input', apply);
+    document.querySelectorAll('.pub-cite').forEach(function (b) {
+        b.addEventListener('click', function () {
+            var text = b.dataset.cite;
+            function done() {
+                var old = b.textContent; b.textContent = 'Скопировано ✓';
+                setTimeout(function () { b.textContent = old; }, 1800);
+            }
+            function fallback() {
+                var a = document.createElement('textarea');
+                a.value = text; a.style.position = 'fixed'; a.style.opacity = '0';
+                document.body.appendChild(a); a.select();
+                try { document.execCommand('copy'); } catch (e) {}
+                document.body.removeChild(a); done();
+            }
+            if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(text).then(done, fallback); }
+            else { fallback(); }
+        });
+    });
+    apply();
+})();
+</script>
