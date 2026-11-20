@@ -3,6 +3,8 @@ layout: default
 title: Словарь категорий
 permalink: /glossary/
 ---
+{% assign terms_list = site.data.glossary.glossary | default: site.data.glossary %}
+
 <div class="layout-grid">
   <!-- Левый закреплённый сайдбар (единый с главной) -->
   <aside class="sidebar">
@@ -39,7 +41,7 @@ permalink: /glossary/
     <section class="section-block" style="margin-bottom: 28px;">
       <div class="section-top">
         <h2>Справочный аппарат лаборатории</h2>
-        <span class="doc-code">DOC-ID: ISOH-GLOSSARY // N={{ site.data.glossary.size }}</span>
+        <span class="doc-code">DOC-ID: ISOH-GLOSSARY // N={{ terms_list.size }}</span>
       </div>
       <h1 class="manifesto-title" style="font-size: 1.9rem;">Словарь категорий гибридной управляемости</h1>
       <p class="manifesto-lead" style="font-size: 0.96rem;">
@@ -53,7 +55,7 @@ permalink: /glossary/
         style="width: 100%; padding: 10px 14px; background: var(--surface); border: 1px solid var(--border-strong); font-family: var(--sans); font-size: 0.9rem; margin-bottom: 12px; outline: none;">
 
       <div style="display: flex; gap: 6px; flex-wrap: wrap;">
-        <button class="cat-btn active" onclick="setCategory('all', this)">Все категории ({{ site.data.glossary.size }})</button>
+        <button class="cat-btn active" onclick="setCategory('all', this)">Все категории ({{ terms_list.size }})</button>
         <button class="cat-btn" onclick="setCategory('Базовые категории', this)">Базовые категории</button>
         <button class="cat-btn" onclick="setCategory('Контур I · Формальная бюрократия', this)">Контур I · Бюрократия</button>
         <button class="cat-btn" onclick="setCategory('Контур II · Алгоритмический контроль', this)">Контур II · Алгоритмы</button>
@@ -63,7 +65,7 @@ permalink: /glossary/
 
     <!-- Список карточек терминов -->
     <div id="glossary-list" style="display: flex; flex-direction: column; gap: 14px;">
-      {% for item in site.data.glossary %}
+      {% for item in terms_list %}
       <article class="contour-card term-card" data-category="{{ item.category }}">
         <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 8px;">
           <span class="contour-label" style="margin-bottom: 0;">{{ item.category }}</span>

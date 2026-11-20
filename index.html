@@ -9,7 +9,7 @@ title: Главная
         <span class="logo-title">ISOH RU</span>
         <span class="version-pill">v0.4</span>
       </a>
-      <div class="lab-ru">Институт социальной организации и гибридного управления</div>
+      <div class="lab-ru">Институт социальной организации и гибридной управляемости</div>
       <div class="lab-en">INSTITUTE OF SOCIAL ORGANIZATION &amp; HYBRID GOVERNANCE</div>
       <p class="lab-desc">
         Независимая исследовательская лаборатория. Изучаем, как в современных организациях и цифровых системах переплетаются формальная бюрократия, алгоритмический контроль и негласные правила.
@@ -139,7 +139,8 @@ title: Главная
       </table>
     </section>
 
-    {% assign core = site.data.glossary %}
+    {% assign terms_list = site.data.glossary.glossary | default: site.data.glossary %}
+    {% assign core = terms_list %}
     {% if core %}
     <section id="concept" class="section-block">
       <div class="section-top">
@@ -150,7 +151,7 @@ title: Главная
         <span class="contour-label">БАЗОВОЕ ПОНЯТИЕ · <em>{{ core.original }}</em></span>
         <h3 style="font-family:var(--serif); font-size:1.4rem; font-weight:400;">{{ core.title }}</h3>
         <p style="color:var(--text);">{{ core.description }}</p>
-        <a href="{{ '/glossary/' | relative_url }}" class="contour-link">Открыть полный словарь категорий ({{ site.data.glossary.size }}) →</a>
+        <a href="{{ '/glossary/' | relative_url }}" class="contour-link">Открыть полный словарь категорий ({{ terms_list.size }}) →</a>
       </div>
     </section>
     {% endif %}
